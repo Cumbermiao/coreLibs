@@ -8,7 +8,9 @@
     "gulp:babel": "./node_modules/.bin/gulp babelJs",
     "gulp:watch": "npm run gulp watch",
     "karma": "./node_modules/.bin/karma",
-    "build": "npm run gulp:babel"
+    "build": "npm run gulp:babel",
+    "coverage:cat": "cat coverage/lcov/lcov.info",
+    "coverage":"npm run coverage:cat | coveralls"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
     "karma": "^4.1.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.2",
+    "karma-coveralls": "^2.1.0",
     "karma-jasmine": "^2.0.1",
     "karma-requirejs": "^1.1.0",
     "requirejs": "^2.3.6"
