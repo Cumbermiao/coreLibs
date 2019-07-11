@@ -8,17 +8,6 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-/**
- * on/addListener
- * off/removeListener
- * once
- * prependListener/prependOnceListener
- * getListeners
- * getListenerCount
- * removeListeners
- * removeAllEvents
- *
- */
 var TYPES = {
   addListener: "addListener",
   removeListener: "removeListener"
@@ -372,8 +361,6 @@ function onceWrapper() {
 function ReflectOwnkeys(target) {
   return Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target));
 }
-/**amd&cmd&window */
-
 
 if (typeof define !== "undefined" && define.amd) {
   define(function () {

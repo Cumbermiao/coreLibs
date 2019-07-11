@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/karma start",
-    "gulp": "./node_modules/.bin/gulp",
+    "gulp:babel": "./node_modules/.bin/gulp babelJs",
     "gulp:watch": "npm run gulp watch",
     "karma": "./node_modules/.bin/karma",
-    "build": "./node_modules/.bin/gulp"
+    "build": "npm run gulp:babel"
   },
   "repository": {
     "type": "git",
