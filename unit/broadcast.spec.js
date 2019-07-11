@@ -1,8 +1,3 @@
-/**
- * XXX: it & describe  run in paralle?
- * XXX: it & it run in paralle?
- */
-
 const bus = new Broadcast();
 
 function* plusOne() {
@@ -76,9 +71,15 @@ describe(`getMaxListeners`, () => {
 /** addListener/on */
 describe(`addListener`, () => {
   let evtName = "addEvt1";
-  let res = bus.on(evtName, () => {
-    console.log(evtName);
-  });
+  let res;
+  beforeEach(()=>{
+    res = bus.on(evtName, () => {
+      console.log(evtName);
+    });
+  })
+  afterEach(()=>{
+    res = undefined;
+  })
   it("should return bus", () => {
     expect(res).toBe(bus);
   });
@@ -93,29 +94,74 @@ describe(`addListener`, () => {
   });
 });
 
-describe(`on`, () => {
+describe(`Method on`, () => {
   let evtName = "addEvt2";
-  let res = bus.on(evtName, () => {
-    console.log(evtName);
-  });
+  let count;
+  let res;
+  let spy;
+  function asyncFn(){
+    return new Promise((resolve,reject)=>{
+      setTimeout(()=>{
+        resolve('done');
+      },500);
+    });
+  }
+  beforeEach(()=>{
+    count = 0;
+    spy = {
+      fn:function(){count++},
+      asyncFn
+    }
+    spyOn(spy,'fn');
+    spyOn(spy,'asyncFn');
+    res = bus.on(evtName, spy.fn);
+    bus.on(evtName, spy.asyncFn);
+    bus.emit(evtName);
+    bus.emit(evtName);
+    bus.emit(evtName);
+    
+  })
+  afterEach(()=>{
+    res = undefined;
+    count=0;
+  })
   it("should return bus", () => {
     expect(res).toBe(bus);
   });
+  it("should excute the function as many as the function was emited!",()=>{
+    expect(spy.fn).toHaveBeenCalled();
+    expect(spy.fn).toHaveBeenCalledTimes(3);
+    expect(spy.asyncFn).toHaveBeenCalled();
+    expect(spy.asyncFn).toHaveBeenCalledTimes(3);
+  })
 });
 
 /** once */
 describe("once", () => {
   let evtName = "onceEvt1";
-  let count = 1;
-  let res = bus.once(evtName, () => count++);
+  let res;
+  let spy;
+  let count;
+  beforeEach(()=>{
+    count = 0;
+    spy = {
+      fn:function(){count++;}
+    }
+    spyOn(spy,'fn');
+    res = bus.once(evtName, spy.fn);
+    bus.emit(evtName);
+    bus.emit(evtName);
+    bus.emit(evtName);
+  });
+  afterEach(()=>{
+    count = res = undefined;
+  })
   it(`should return bus`, () => {
     expect(res).toBe(bus);
   });
   it(`should excute once while emit multiple times`, () => {
-    bus.emit(evtName);
-    bus.emit(evtName);
-    bus.emit(evtName);
-    expect(count).toBe(2);
+    expect(spy.fn).toHaveBeenCalled();
+    expect(spy.fn).toHaveBeenCalledTimes(1)
   });
 });
 

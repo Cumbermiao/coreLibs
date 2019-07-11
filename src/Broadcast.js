@@ -1,15 +1,3 @@
-/**
- * on/addListener
- * off/removeListener
- * once
- * prependListener/prependOnceListener
- * getListeners
- * getListenerCount
- * removeListeners
- * removeAllEvents
- *
- */
-
 const TYPES = {
   addListener: "addListener",
   removeListener: "removeListener"
@@ -323,7 +311,6 @@ function ReflectOwnkeys(target) {
   );
 }
 
-/**amd&cmd&window */
 if (typeof define !== "undefined" && define.amd) {
   define(function() {
     return Broadcast;

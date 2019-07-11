@@ -1,0 +1,14 @@
+sudo: false
+language: node_js
+os: windows
+node_js:
+  - "9"
+  - "10"
+branches:
+  only:
+  - master
+install:
+- npm install
+script:
+  - npm run build
+after_success:
