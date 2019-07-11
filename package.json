@@ -8,7 +8,7 @@
     "gulp": "./node_modules/.bin/gulp",
     "gulp:watch": "npm run gulp watch",
     "karma": "./node_modules/.bin/karma",
-    "build": "npm run gulp"
+    "build": "./node_modules/.bin/gulp"
   },
   "repository": {
     "type": "git",
