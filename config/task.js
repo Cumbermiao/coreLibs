@@ -1,8 +1,9 @@
 const {resolve} = require('path');
-const babelJs = require('./babel');
+const {babelJs,babelUnit} = require('./babel');
 const cleanCoverage = require('./clean');
 
 module.exports = {
   babelJs,
+  babelUnit,
   cleanCoverage
 }

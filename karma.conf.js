@@ -13,7 +13,8 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       "dist/*.js",
-      "unit/*.spec.js"
+      // "unit/dist/*.spec.js"
+      // "unit/dist/*.spec.js"
     ],
 
     // list of files / patterns to exclude
@@ -51,7 +52,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ["PhantomJS"],
+    browsers: ["PhantomJS"],//PhantomJS
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

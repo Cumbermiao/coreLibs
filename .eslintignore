@@ -1,4 +1,4 @@
-*.conf.js
+/*.js
 /unit
 /dist
 /config

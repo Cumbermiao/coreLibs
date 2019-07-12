@@ -361,6 +361,8 @@ function onceWrapper() {
 function ReflectOwnkeys(target) {
   return Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target));
 }
+/* eslint-disable */
+
 
 if (typeof define !== "undefined" && define.amd) {
   define(function () {
@@ -373,3 +375,4 @@ if (typeof define !== "undefined" && define.amd) {
     window.Broadcast = Broadcast;
   }
 }
+/* eslint-enable */

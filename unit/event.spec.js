@@ -1,3 +1,4 @@
+require('@babel/polyfill');
 const bus = new Broadcast();
 
 function* plusOne() {
@@ -11,7 +12,7 @@ function* plusOne() {
   return 8;
 }
 
-let generator = plusOne();
+// let generator = plusOne();
 
 /** Broadcast instance */
 describe("bus", () => {
@@ -335,19 +336,24 @@ describe("off", () => {
 
 /** emit */
 describe(`emit`, () => {
+  let spy;
   let evtName = "emitEvt1";
-  let generator = plusOne();
-  let res;
-  let fn1 = () => (res = generator.next());
-  let fn2 = () => (res = generator.next());
-  bus.on(evtName, fn1);
-  bus.once(evtName, fn2);
-  bus.prependListener(evtName, fn1);
-  bus.prependOnceListener(evtName, fn2);
-  bus.emit(evtName);
-  bus.emit(evtName);
+
+  beforeEach(function(){
+    spy = {
+      fn:function(){return null}
+    }
+    spyOn(spy,'fn');
+    bus.on(evtName, spy.fn);
+    bus.once(evtName, spy.fn);
+    bus.prependListener(evtName, spy.fn);
+    bus.prependOnceListener(evtName, spy.fn);
+    bus.emit(evtName);
+    bus.emit(evtName);
+  })
+
   it(`should excute all listeners in ${evtName} and the listeners which are once or prependOnceListener excute only once`, () => {
-    expect(res.value).toBe(6);
+    expect(spy.fn).toHaveBeenCalledTimes(6)
   });
 });
 

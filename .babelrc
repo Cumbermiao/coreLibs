@@ -5,8 +5,9 @@
       {
         "targets": {
           "chrome": "58",
-          "ie": "11"
-        }
+          "ie": "10"
+        },
+        "useBuiltIns": "usage",
       }
     ]
   ],

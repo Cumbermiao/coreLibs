@@ -5,14 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/karma start",
+    "gulp": "./node_modules/.bin/gulp",
+    "gulp:build": "./node_modules/.bin/gulp build",
     "gulp:babel": "./node_modules/.bin/gulp babelJs",
     "gulp:clean": "./node_modules/.bin/gulp cleanCoverage",
     "gulp:watch": "npm run gulp watch",
     "karma": "./node_modules/.bin/karma",
-    "build": "npm run gulp:babel",
+    "build": "npm run gulp:build",
     "coverage:cat": "cat coverage/lcov/lcov.info",
     "coverage": "npm run coverage:cat | coveralls",
-    "clean": "npm run gulp:clean"
+    "clean": "npm run gulp:clean",
+    "parcel": "parcel build unit/event.spec.js "
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,7 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "chalk": "^2.4.2",
+    "cross-env": "^5.2.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-cli": "^2.2.0",
@@ -36,6 +40,11 @@
     "karma-jasmine": "^2.0.1",
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-requirejs": "^1.1.0",
+    "parcel-bundler": "^1.12.3",
     "requirejs": "^2.3.6"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "@babel/runtime": "^7.5.4"
   }
 }
