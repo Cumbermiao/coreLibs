@@ -1,6 +1,6 @@
 const TYPES = {
   addListener: "addListener",
-  removeListener: "removeListener"
+  removeListener: "removeListener",
 };
 class Broadcast {
   constructor() {
@@ -9,7 +9,7 @@ class Broadcast {
   setMaxListeners(count) {
     if (typeof count === "number" && count > -1 && !isNaN(count)) {
       this._maxListener = count;
-      return true
+      return true;
     } else {
       throw new RangeError(
         `count should be a non-negative number! Received ${count}`
@@ -45,7 +45,7 @@ class Broadcast {
     if (handlers === "undefined") return this;
     if (typeof handlers === "function") {
       //handlers is a function
-      if (handlers === listener||handlers.listener === listener) {
+      if (handlers === listener || handlers.listener === listener) {
         this._eventsCount--;
         delete events[type];
         //XXX: Is it necessary to deassign this._events
@@ -58,7 +58,11 @@ class Broadcast {
       //handlers is a array
       let postion = -1;
       for (postion = 0; postion < handlers.length; postion++) {
-        if (handlers[postion] === listener||handlers[postion].listener === listener) break;
+        if (
+          handlers[postion] === listener ||
+          handlers[postion].listener === listener
+        )
+          break;
       }
       if (postion < handlers.length) {
         handlers.splice(postion, 1);
@@ -72,7 +76,7 @@ class Broadcast {
   }
   removeListener(type, listener) {
     // if no param for listener , remove all listeners in type
-    if (arguments.length===1) {
+    if (arguments.length === 1) {
       let events = this._events;
       if (events === undefined) return this;
       let handlers = events[type];
@@ -122,7 +126,7 @@ class Broadcast {
       //XXX: why should copy handlers when handler in handlers is still a reference type
       let copyHandlers = arrayClone(handlers, handlers.length);
       //LIFO
-      for (i = copyHandlers.length-1; i >= 0; i--) {
+      for (i = copyHandlers.length - 1; i >= 0; i--) {
         ReflectApply(copyHandlers[i], this, params);
       }
       return true;
@@ -139,7 +143,8 @@ class Broadcast {
     let handlers = events[type];
     if (handlers === undefined) return [];
     else if (typeof handlers === "function") return [handlers];
-    else if (Array.isArray(handlers)) return arrayClone(handlers,handlers.length);
+    else if (Array.isArray(handlers))
+      return arrayClone(handlers, handlers.length);
   }
   getListenerCount(type) {
     let handlers = this.getListeners(type);
@@ -179,7 +184,7 @@ Object.defineProperty(Broadcast, "defaultMaxListener", {
         `defaultMaxListener should be a non-negative number! Received ${defaultMaxListener}`
       );
     }
-  }
+  },
 });
 
 Broadcast.init = function() {
@@ -249,7 +254,7 @@ function _addListener(target, type, listener, prepend) {
       `listeners in ${type} is more than maxListener ${maxListener}!`
     );
   }
-  return target
+  return target;
 }
 
 /**
@@ -305,12 +310,14 @@ function onceWrapper() {
  *
  * @description get target own properties includes symbol properties , same with Reflect.ownKeys
  */
+
 function ReflectOwnkeys(target) {
   return Object.getOwnPropertyNames(target).concat(
     Object.getOwnPropertySymbols(target)
   );
 }
 
+/* eslint-disable */
 if (typeof define !== "undefined" && define.amd) {
   define(function() {
     return Broadcast;
@@ -322,3 +329,4 @@ if (typeof define !== "undefined" && define.amd) {
     window.Broadcast = Broadcast;
   }
 }
+/* eslint-enable */

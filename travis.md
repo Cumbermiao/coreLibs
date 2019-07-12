@@ -11,7 +11,7 @@ Travis CI 提供的是持续集成服务（Continuous Integration，简称 CI）
 - 该项目里面有可运行的代码
 - 该项目还包含构建或测试脚本
 
-## 绑定仓库
+## 绑定
 1. 使用 github 账号登录 [travis](https://travis-ci.org)
 
-2. 进入 github profile
+2. add respositories
