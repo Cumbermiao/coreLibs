@@ -27,9 +27,9 @@ module.exports = function(config) {
     },
 
     coverageReporter: {
-      // type: "lcov",
+      type: "lcov",
       dir: "coverage/",
-      reporters: [{ type: "html" , subdir:'html'}, { type: "lcov",subdir:'lcov' }]
+      // reporters: [{ type: "html" , subdir:'html'}, { type: "lcov",subdir:'lcov' }]
     },
     // test results reporter to use
     // possible values: 'dots', 'progress'

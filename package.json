@@ -6,11 +6,13 @@
   "scripts": {
     "test": "./node_modules/.bin/karma start",
     "gulp:babel": "./node_modules/.bin/gulp babelJs",
+    "gulp:clean": "./node_modules/.bin/gulp cleanCoverage",
     "gulp:watch": "npm run gulp watch",
     "karma": "./node_modules/.bin/karma",
     "build": "npm run gulp:babel",
     "coverage:cat": "cat coverage/lcov/lcov.info",
-    "coverage":"npm run coverage:cat | coveralls"
+    "coverage": "npm run coverage:cat | coveralls",
+    "clean": "npm run gulp:clean"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-cli": "^2.2.0",
+    "gulp-rm": "^2.0.0",
     "jasmine-core": "^3.4.0",
     "karma": "^4.1.0",
     "karma-chrome-launcher": "^2.2.0",

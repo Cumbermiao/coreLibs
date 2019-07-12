@@ -73,9 +73,7 @@ describe(`addListener`, () => {
   let evtName = "addEvt1";
   let res;
   beforeEach(()=>{
-    res = bus.on(evtName, () => {
-      console.log(evtName);
-    });
+    res = bus.on(evtName, () => nll);
   })
   afterEach(()=>{
     res = undefined;
