@@ -37,7 +37,7 @@ module.exports = function(config) {
     reporters: ["progress", "coverage"],
 
     // web server port
-    port: 9876,
+    port: 9877,
 
     // enable / disable colors in the output (reporters and logs)
     colors: true,
@@ -56,10 +56,13 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    concurrency: Infinity,
+
+    //config error
+    // plugins:['karma-coverage']
   });
 };
