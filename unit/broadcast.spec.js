@@ -1,4 +1,3 @@
-require('@babel/polyfill');
 const bus = new Broadcast();
 
 function* plusOne() {

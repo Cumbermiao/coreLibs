@@ -13,8 +13,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       "dist/*.js",
-      // "unit/dist/*.spec.js"
-      // "unit/dist/*.spec.js"
+      "unit/*.spec.js"
     ],
 
     // list of files / patterns to exclude
@@ -52,17 +51,16 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ["PhantomJS"],//PhantomJS
+    browsers: ["Chrome"],//PhantomJS
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true,
+    singleRun: false,
 
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity,
 
-    //config error
     // plugins:['karma-coverage']
   });
 };

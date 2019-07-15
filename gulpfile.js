@@ -10,7 +10,7 @@ task('watch',()=>{
   watch('src/*.js',series('babelSrc'))
 })
 
-let  build = series(babelJs,babelUnit);
+let  build = series(babelJs);
 
 build.displayName = 'build';
 
