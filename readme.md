@@ -40,7 +40,7 @@ require.config({
 
   // if you use script tag to load js, do not set file in path, or it will cause error MISMATCHED ANONYMOUS DEFINE() MODULES in requirejs 
   path:{
-    'broadcast':'./dist/Broadcast.js'
+    'broadcast':'./dist/broadcast.js'
   },
   // dynamically load all test files
   deps: allTestFiles,
